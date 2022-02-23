@@ -25,9 +25,9 @@ router.post('/', async (req, res) => {
     })
     try{
         const newProduct = await product.save()
-        res.status(201).json(newUser)
+        res.status(201).json(newProduct)
     }catch{
-        res.status(400).json({message: err.message})
+        res.status(400).json({message: 'Could not add product'})
     }
 })
 
@@ -51,7 +51,7 @@ router.patch('/:id', getProduct, async (req, res) => {
 router.delete('/:id', getProduct, async(req, res) => {
     try{
         await res.product.remove()
-        res.json({message: 'User deleted'})
+        res.json({message: 'Product deleted'})
     }catch{
         return res.status(500).json({message: err.message})
     }
